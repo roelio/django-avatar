@@ -33,9 +33,9 @@ def avatar_file_path(instance=None, filename=None, size=None, ext=None):
     tmppath = [AVATAR_STORAGE_DIR]
     if AVATAR_HASH_USERDIRNAMES:
         tmp = md5_constructor(instance.user.username).hexdigest()
-        tmppath.extend([tmp[0], tmp[1], instance.user.pk])
+        tmppath.extend([tmp[0], tmp[1], str(instance.user.pk)])
     else:
-        tmppath.append(instance.user.pk)
+        tmppath.append(str(instance.user.pk))
     if not filename:
         # Filename already stored in database
         filename = instance.avatar.name
