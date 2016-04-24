@@ -32,7 +32,7 @@ from avatar.settings import (AVATAR_STORAGE_DIR, AVATAR_RESIZE_METHOD,
 def avatar_file_path(instance=None, filename=None, size=None, ext=None):
     tmppath = [AVATAR_STORAGE_DIR]
     if AVATAR_HASH_USERDIRNAMES:
-        tmp = md5_constructor(instance.user.username).hexdigest()
+        tmp = md5_constructor(unicode(instance.user.username)).hexdigest()
         tmppath.extend([tmp[0], tmp[1], str(instance.user.pk)])
     else:
         tmppath.append(str(instance.user.pk))
